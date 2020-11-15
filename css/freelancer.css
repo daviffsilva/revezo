@@ -9781,6 +9781,7 @@ a.text-dark:hover, a.text-dark:focus {
   margin-bottom: 30px;
   border-radius: 0.5rem;
   overflow: hidden;
+  max-height: 350px;
 }
 
 .portfolio .portfolio-item .portfolio-item-caption {
@@ -9789,7 +9790,7 @@ a.text-dark:hover, a.text-dark:focus {
   left: 0;
   transition: all 0.7s ease-in-out;
   opacity: 0;
-  background-color: rgba(26, 188, 156, 0.9);
+  background-color: rgba(69, 69, 69, 0.85);
 }
 
 .portfolio .portfolio-item .portfolio-item-caption:hover {
