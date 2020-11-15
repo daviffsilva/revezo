@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Revezo - Login</title>
+    <title>Revezo - Dashboard</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -18,25 +18,24 @@
 <body style="height: 100vh;">
 <div class="h-100 d-flex justify-content-center align-items-center flex-column">
     <div class="bg-gradient-primary p-3 rounded">
-        <h1>Login</h1>
-        <form action="./usuario/login.php" method="post">
-        <?php if(isset($_SESSION["error"])){ ?>
-            <div class="alert alert-danger">
-                <span><?=$_SESSION["error"]?></span>
-            </div>
-        <?php unset($_SESSION["error"]);} ?>
+        <h1>Registro</h1>
+        <form action="./usuario/registro.php" method="post">
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome">
             </div>
             <div class="form-group">
                 <label for="password">Senha</label>
                 <input type="password" class="form-control" id="password" name="senha">
             </div>
             <div class="form-group">
-                <button login class="btn btn-success btn-block">Entrar</button>
+                <button login class="btn btn-success btn-block">Cadastrar</button>
             </div>
-            Não possui conta? <a href="cadastrar.php" class="btn btn-sm btn-outline-light">Faça seu cadastro</a>
+            Já possui conta? <a href="./" class="btn btn-sm btn-outline-light">Voltar</a>
         </form>
     </div>
 </div>

@@ -1,7 +1,13 @@
 <?php
 require('bootstrap.php');
+require('./database/DatabaseUtils.php');
+
+if(isset($_POST["Salvar"])) {
+    $db = new DatabaseUtils();
+    $db->alterar();
+}
 ?>
-<html style="height: auto;" class="">
+<html style="height: auto;">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,142 +23,150 @@ require('bootstrap.php');
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
+
 <body class="sidebar-mini" style="height: auto;">
-<div class="wrapper">
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-        <!-- Left navbar links -->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-            </li>
-        </ul>
-    </nav>
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
-        <div class="sidebar">
-            <!-- Sidebar user panel (optional) -->
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="info">
-          <a href="perfil.php" class="d-block"><?= isset($_SESSION['user']) ? $_SESSION['user']['name'] : 'Não Logado' ?></a>
-        </div>
-      </div>
-            <!-- Sidebar Menu -->
-            <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <li class="nav-item">
-                        <a href="index.php" class="nav-link">
-                            <i class="nav-icon fas fa-chart-line"></i>
-                            <p>
-                                Dashboard
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="perfil.php" class="nav-link active">
-                            <i class="nav-icon fas fa-user-alt"></i>
-                            <p>
-                                Meu perfil
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-book"></i>
-                            <p>
-                                Trilhas
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="./trilhas.php" class="nav-link">
-                                    <i class="fas fa-list nav-icon"></i>
-                                    <p>Trilhas</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="./adicionar_trilhas.php" class="nav-link">
-                                    <i class="fas fa-plus nav-icon"></i>
-                                    <p>Adicionar Trilha</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="usuarios.php" class="nav-link">
-                            <i class="nav-icon fas fa-users"></i>
-                            <p>
-                                Usuários
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="logout.php" class="nav-link">
-                            <i class="nav-icon fas fa-sign-out-alt"></i>
-                            <p>
-                                Sair
-                            </p>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <!-- /.sidebar-menu -->
-        </div>
-        <!-- /.sidebar -->
-    </aside>
-    <div class="content-wrapper" style="min-height: 100vh;">
-        <div class="text-center py-2 px-5 container-fluid">
-            <form class="text-left">
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="form-group">
-                            <label for="nome">Nome:</label>
-                            <input type="text" id='nome' name='nome' class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" id='email' name='email' class="form-control" disabled>
-                        </div>
+    <div class="wrapper">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+            </ul>
+        </nav>
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="info">
+                        <a href="perfil.php" class="d-block"><?= isset($_SESSION['user']) ? $_SESSION['user']['nome'] : 'Não Logado' ?></a>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="nome">Telefone:</label>
-                            <input type="text" id='telefone' name='telefone' class="form-control">
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <li class="nav-item">
+                            <a href="index.php" class="nav-link">
+                                <i class="nav-icon fas fa-chart-line"></i>
+                                <p>
+                                    Dashboard
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="perfil.php" class="nav-link active">
+                                <i class="nav-icon fas fa-user-alt"></i>
+                                <p>
+                                    Meu perfil
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    Trilhas
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="./trilhas.php" class="nav-link">
+                                        <i class="fas fa-list nav-icon"></i>
+                                        <p>Trilhas</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="./adicionar_trilhas.php" class="nav-link">
+                                        <i class="fas fa-plus nav-icon"></i>
+                                        <p>Adicionar Trilha</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="usuarios.php" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Usuários
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="logout.php" class="nav-link">
+                                <i class="nav-icon fas fa-sign-out-alt"></i>
+                                <p>
+                                    Sair
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+        <div class="content-wrapper" style="min-height: 100vh;">
+            <div class="text-center py-2 px-5 container-fluid">
+                <form method="POST" class="text-left">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label for="nome">Nome:</label>
+                                <input type="text" id='nome' name='nome' class="form-control" value="<?= isset($_SESSION['user']) ? $_SESSION['user']['nome'] : '' ?>" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" id='email' name='email' class="form-control" value="<?= isset($_SESSION['user']) ? $_SESSION['user']['email'] : '' ?>" disabled>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="data_nascimento">Data de nascimento:</label>
-                            <input type="date" id='data_nascimento' name='data_nascimento' class="form-control">
+                    <div class="row">
+                        <div class="col-md-4 d-none">
+                            <div class="form-group">
+                                <label for="nome">Telefone:</label>
+                                <input type="text" id='telefone' name='telefone' class="form-control" >
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="data_nascimento">Data de nascimento:</label>
+                                <input type="date" id='data_nascimento' value="<?= isset($_SESSION['user']) ? $_SESSION['user']['data_nascimento'] : '' ?>" name='data_nascimento' class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="senha">Senha:</label>
+                                <input type="password" id='senha' name='senha' class="form-control" placeholder="Deixe em branco para não alterar">
+                            </div>
+                        </div>
+                        <div class="col-md-4 d-none">
+                            <div class="form-group">
+                                <label for="cpf">CPF:</label>
+                                <input type="text" id='cpf' name='cpf' class="form-control">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="cpf">CPF:</label>
-                            <input type="text" id='cpf' name='cpf' class="form-control">
-                        </div>
+                    <div class="form-group">
+                        <button name="Salvar" class="btn btn-block btn-success">Salvar</button>
                     </div>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-block btn-success">Salvar</button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-block">
+                <b>Version</b> 1.0.0
+            </div>
+            <strong>Copyright © 2020 REVEZO </strong> All rights
+            reserved.
+        </footer>
     </div>
-    <footer class="main-footer">
-        <div class="float-right d-none d-sm-block">
-            <b>Version</b> 1.0.0
-        </div>
-        <strong>Copyright © 2020 REVEZO </strong> All rights
-        reserved.
-    </footer>
-</div>
-<script src="../plugins/jquery/jquery.min.js"></script>
-<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../dist/js/adminlte.min.js"></script>
-<script src="../dist/js/demo.js"></script>
+    <script src="../plugins/jquery/jquery.min.js"></script>
+    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../dist/js/adminlte.min.js"></script>
+    <script src="../dist/js/demo.js"></script>
 </body>
+
 </html>

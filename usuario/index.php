@@ -5,7 +5,7 @@ require('bootstrap.php');
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Revezo - Dashboard</title>
+  <title>Revezo - Página Inicial</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -42,7 +42,7 @@ require('bootstrap.php');
             <a href="index.php" class="nav-link active">
                 <i class="nav-icon fas fa-chart-line"></i>
                 <p>
-                  Dashboard
+                  Página Inicial
                 </p>
             </a>
           </li>
@@ -69,22 +69,8 @@ require('bootstrap.php');
                             <p>Trilhas</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="./adicionar_trilhas.php" class="nav-link">
-                            <i class="fas fa-plus nav-icon"></i>
-                            <p>Adicionar Trilha</p>
-                        </a>
-                    </li>
                 </ul>
             </li>
-          <li class="nav-item">
-            <a href="usuarios.php" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Usuários
-              </p>
-            </a>
-          </li>
           <li class="nav-item">
             <a href="logout.php" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>
@@ -101,7 +87,7 @@ require('bootstrap.php');
   </aside>
   <div class="content-wrapper" style="min-height: 100vh;">
     <div class="container">
-      Dashboard
+      Homepage
     </div>
   </div>
   <footer class="main-footer">

@@ -32,7 +32,7 @@ require('bootstrap.php');
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="info">
-          <a href="perfil.php" class="d-block"><?= isset($_SESSION['user']) ? $_SESSION['user']['name'] : 'Não Logado' ?></a>
+          <a href="perfil.php" class="d-block"><?= isset($_SESSION['user']) ? $_SESSION['user']['nome'] : 'Não Logado' ?></a>
         </div>
       </div>
             <!-- Sidebar Menu -->
