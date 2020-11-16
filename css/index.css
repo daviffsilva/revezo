@@ -70,19 +70,6 @@ button.revezo-button{
     padding: 0;
     position: relative;
   }
-  
-  .timeline::before {
-    border-radius: 0.25rem;
-    background: #fff;
-    bottom: 0;
-    content: '';
-    left: 31px;
-    margin: 0;
-    position: absolute;
-    top: 0;
-    width: 4px;
-  }
-  
   .timeline > div {
     margin-bottom: 15px;
     margin-right: 10px;
